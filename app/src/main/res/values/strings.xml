@@ -1,3 +1,72 @@
 <resources>
-    <string name="app_name">PlaySongHymBook</string>
+    <string name="app_name">PlaySongs HymBook</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_all_hymns">All Hymns</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Home Screen -->
+    <string name="recent_hymns">Recent Hymns</string>
+    <string name="search_hymns">Search hymns...</string>
+    <string name="hymn_numbers">Hymn Numbers</string>
+
+    <!-- All Hymns Screen -->
+    <string name="all_hymns_title">All Hymns</string>
+    <string name="no_hymns_found">No hymns found</string>
+    
+    <!-- Favorites Screen -->
+    <string name="favorites">Favorite</string>
+    <string name="favorites_title">Favorite Hymns</string>
+    <string name="no_favorites">No favorite hymns yet</string>
+    <string name="add_favorites_hint">Tap the heart icon on any hymn to add it to your favorites</string>
+    
+    <!-- Settings Screen -->
+    <string name="settings">Settings</string>
+    <string name="settings_title">Settings</string>
+    <string name="language_setting">Language</string>
+    <string name="theme_setting">Theme</string>
+    <string name="font_scale_setting">Font Scale</string>
+    <string name="autoplay_setting">Autoplay</string>
+    <string name="autoplay_on_open">Autoplay on open</string>
+    <string name="remember_position_setting">Remember Playback Position</string>
+    <string name="remember_playback_position">Remember playback position</string>
+    
+    <!-- Language Options -->
+    <string name="language">Language</string>
+    <string name="language_english">English</string>
+    <string name="language_french">French</string>
+    
+    <!-- Theme Options -->
+    <string name="theme">Theme</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    
+    <!-- Font Scale Options -->
+    <string name="font_scale">Font Scale</string>
+    <string name="font_scale_small">Small</string>
+    <string name="font_scale_normal">Normal</string>
+    <string name="font_scale_large">Large</string>
+    
+    <!-- Details Screen -->
+    <string name="hymn_not_found">Hymn not found</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="remove_from_favorites">Remove from favorites</string>
+    <string name="share_hymn">Share hymn</string>
+    <string name="previous_hymn">Previous</string>
+    <string name="next_hymn">Next</string>
+    
+    <!-- Audio Player -->
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="rewind_10">Rewind 10 seconds</string>
+    <string name="forward_10">Forward 10 seconds</string>
+    <string name="player_options">Player Options</string>
+    
+    <!-- Common -->
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
 </resources>

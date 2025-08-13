@@ -99,6 +99,16 @@ dependencies {
     // Image Loading
     implementation(libs.coil.compose)
 
+    // ExoPlayer for audio playback
+    implementation("androidx.media3:media3-exoplayer:1.2.1")
+    implementation("androidx.media3:media3-ui:1.2.1")
+    implementation("androidx.media3:media3-common:1.2.1")
+    implementation("androidx.media3:media3-datasource:1.2.1")
+    implementation("androidx.media3:media3-datasource-okhttp:1.2.1")
+
+    // DataStore for preferences
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
     // ExifInterface for image orientation
     implementation("androidx.exifinterface:exifinterface:1.3.7")
 
