@@ -1,0 +1,72 @@
+<resources>
+    <string name="app_name">PlaySongs HymBook</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Accueil</string>
+    <string name="nav_all_hymns">Tous les Cantiques</string>
+    <string name="nav_favorites">Favoris</string>
+    <string name="nav_settings">Paramètres</string>
+    
+    <!-- Home Screen -->
+    <string name="recent_hymns">Cantiques Récents</string>
+    <string name="search_hymns">Rechercher des cantiques...</string>
+    <string name="hymn_numbers">Numéros de Cantiques</string>
+
+    <!-- All Hymns Screen -->
+    <string name="all_hymns_title">Tous les Cantiques</string>
+    <string name="no_hymns_found">Aucun cantique trouvé</string>
+    
+    <!-- Favorites Screen -->
+    <string name="favorites">Favori</string>
+    <string name="favorites_title">Cantiques Favoris</string>
+    <string name="no_favorites">Aucun cantique favori pour le moment</string>
+    <string name="add_favorites_hint">Appuyez sur l\'icône cœur sur n\'importe quel cantique pour l\'ajouter à vos favoris</string>
+    
+    <!-- Settings Screen -->
+    <string name="settings">Paramètres</string>
+    <string name="settings_title">Paramètres</string>
+    <string name="language_setting">Langue</string>
+    <string name="theme_setting">Thème</string>
+    <string name="font_scale_setting">Taille de Police</string>
+    <string name="autoplay_setting">Lecture Automatique</string>
+    <string name="autoplay_on_open">Lecture automatique à l\'ouverture</string>
+    <string name="remember_position_setting">Mémoriser la Position de Lecture</string>
+    <string name="remember_playback_position">Mémoriser la position de lecture</string>
+    
+    <!-- Language Options -->
+    <string name="language">Langue</string>
+    <string name="language_english">Anglais</string>
+    <string name="language_french">Français</string>
+    
+    <!-- Theme Options -->
+    <string name="theme">Thème</string>
+    <string name="theme_system">Système</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
+    
+    <!-- Font Scale Options -->
+    <string name="font_scale">Taille de Police</string>
+    <string name="font_scale_small">Petite</string>
+    <string name="font_scale_normal">Normale</string>
+    <string name="font_scale_large">Grande</string>
+    
+    <!-- Details Screen -->
+    <string name="hymn_not_found">Cantique non trouvé</string>
+    <string name="add_to_favorites">Ajouter aux favoris</string>
+    <string name="remove_from_favorites">Retirer des favoris</string>
+    <string name="share_hymn">Partager le cantique</string>
+    <string name="previous_hymn">Précédent</string>
+    <string name="next_hymn">Suivant</string>
+    
+    <!-- Audio Player -->
+    <string name="play">Jouer</string>
+    <string name="pause">Pause</string>
+    <string name="rewind_10">Reculer de 10 secondes</string>
+    <string name="forward_10">Avancer de 10 secondes</string>
+    <string name="player_options">Options du Lecteur</string>
+    
+    <!-- Common -->
+    <string name="loading">Chargement...</string>
+    <string name="error">Erreur</string>
+    <string name="retry">Réessayer</string>
+</resources>
