@@ -45,7 +45,7 @@ fun HomeScreen(
         ) {
             Text(
                 text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.headlineMedium,
+                style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold
             )
             
@@ -62,7 +62,7 @@ fun HomeScreen(
             )
         }
         
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         
         // Search Bar
         SearchBar(
@@ -72,17 +72,17 @@ fun HomeScreen(
             placeholder = stringResource(R.string.search_hymns)
         )
         
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         
         // Recent Hymns Section
         if (uiState.recentHymns.isNotEmpty()) {
-            Text(
+           /* Text(
                 text = stringResource(R.string.recent_hymns),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
-            )
+            )*/
             
-            Spacer(modifier = Modifier.height(8.dp))
+            // Spacer(modifier = Modifier.height(8.dp))
             
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -96,16 +96,16 @@ fun HomeScreen(
                 }
             }
             
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(8.dp))
         }
         
-        // Number Grid Section
+       /* // Number Grid Section
         Text(
             text = stringResource(R.string.hymn_numbers),
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.SemiBold
         )
-        
+        */
         Spacer(modifier = Modifier.height(8.dp))
         
         // Number Grid (1-400)
