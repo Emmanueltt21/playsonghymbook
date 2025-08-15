@@ -18,6 +18,7 @@ import javax.inject.Singleton
 
 data class PlaybackState(
     val isPlaying: Boolean = false,
+    val isPaused: Boolean = false,
     val currentPosition: Long = 0L,
     val duration: Long = 0L,
     val isLoading: Boolean = false,
@@ -106,6 +107,10 @@ class AudioPlayer @Inject constructor(
         _playbackState.value = PlaybackState()
     }
     
+    fun stopAudio() {
+        stop()
+    }
+    
     fun getCurrentPosition(): Long {
         return exoPlayer?.currentPosition ?: 0L
     }
@@ -118,6 +123,7 @@ class AudioPlayer @Inject constructor(
         exoPlayer?.let { player ->
             _playbackState.value = _playbackState.value.copy(
                 isPlaying = player.isPlaying,
+                isPaused = !player.isPlaying && player.playbackState == Player.STATE_READY,
                 currentPosition = player.currentPosition,
                 duration = if (player.duration > 0) player.duration else 0L,
                 isLoading = player.playbackState == Player.STATE_BUFFERING

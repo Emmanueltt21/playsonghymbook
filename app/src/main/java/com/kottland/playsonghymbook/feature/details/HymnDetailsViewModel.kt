@@ -1,5 +1,7 @@
 package com.kottland.playsonghymbook.feature.details
 
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kottland.playsonghymbook.core.audio.AudioPlayer
@@ -7,6 +9,7 @@ import com.kottland.playsonghymbook.core.data.database.entity.Hymn
 import com.kottland.playsonghymbook.core.data.preferences.PreferencesManager
 import com.kottland.playsonghymbook.core.data.repository.HymnRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +24,8 @@ data class HymnDetailsUiState(
 class HymnDetailsViewModel @Inject constructor(
     private val hymnRepository: HymnRepository,
     private val preferencesManager: PreferencesManager,
-    private val audioPlayer: AudioPlayer
+    private val audioPlayer: AudioPlayer,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
     
     private val _uiState = MutableStateFlow(HymnDetailsUiState())
@@ -97,8 +101,23 @@ class HymnDetailsViewModel @Inject constructor(
     }
     
     fun shareHymn() {
-        // TODO: Implement sharing functionality
-        // This would typically use Android's share intent
+        val hymn = _uiState.value.hymn ?: return
+        val language = language.value
+        
+        val title = if (language == "en") hymn.titleEn else hymn.titleFr
+        val shareText = "Check out this hymn: #${hymn.number} - $title"
+        
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, shareText)
+            putExtra(Intent.EXTRA_SUBJECT, "Hymn #${hymn.number}")
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        
+        val chooserIntent = Intent.createChooser(shareIntent, "Share Hymn")
+        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(chooserIntent)
     }
     
     override fun onCleared() {

@@ -29,16 +29,37 @@ fun HymnDetailsScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val language by viewModel.language.collectAsStateWithLifecycle()
     val playbackState by viewModel.playbackState.collectAsStateWithLifecycle()
+    val bottomSheetState = rememberBottomSheetScaffoldState()
     
     LaunchedEffect(hymnNumber) {
         viewModel.loadHymn(hymnNumber)
     }
     
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        // Top App Bar
-        TopAppBar(
+    BottomSheetScaffold(
+        scaffoldState = bottomSheetState,
+        sheetContent = {
+            if (playbackState.isPlaying || playbackState.isPaused) {
+                AudioPlayerControls(
+                    playbackState = playbackState,
+                    onPlayPause = { viewModel.playPause() },
+                    onSeek = { position -> viewModel.seekTo(position) },
+                    onPlayAudio = {
+                        uiState.hymn?.let { hymn ->
+                            val audioFileName = if (language == "en") "${hymn.number}en.mp3" else "${hymn.number}fr.mp3"
+                            val audioUrl = "file:///android_asset/hymn_songs/$audioFileName"
+                            viewModel.playAudio(audioUrl)
+                        }
+                    },
+                    modifier = Modifier.padding(16.dp)
+                )
+            } else {
+                // Empty content when not playing
+                Spacer(modifier = Modifier.height(1.dp))
+            }
+        },
+        sheetPeekHeight = if (playbackState.isPlaying || playbackState.isPaused) 120.dp else 0.dp,
+        topBar = {
+            TopAppBar(
             title = {
                 Text(
                     text = uiState.hymn?.let { "#${it.number}" } ?: "",
@@ -60,19 +81,21 @@ fun HymnDetailsScreen(
                 // Play Button
                 IconButton(
                     onClick = {
-                        val audioUrl = if (language == "en") uiState.hymn?.audioUrlEn else uiState.hymn?.audioUrlFr
-                        audioUrl?.let {
-                            if (playbackState.isPlaying) {
+                        uiState.hymn?.let { hymn ->
+                            val audioFileName = if (language == "en") "${hymn.number}en.mp3" else "${hymn.number}fr.mp3"
+                            val audioUrl = "file:///android_asset/hymn_songs/$audioFileName"
+                            
+                            if (playbackState.isPlaying && playbackState.currentMediaItem == audioUrl) {
                                 viewModel.playPause()
                             } else {
-                                viewModel.playAudio(it)
+                                viewModel.playAudio(audioUrl)
                             }
                         }
                     }
                 ) {
                     Icon(
                         imageVector = Icons.Default.PlayArrow,
-                        contentDescription = "Play"
+                        contentDescription = if (playbackState.isPlaying) "Pause" else "Play"
                     )
                 }
 
@@ -102,6 +125,8 @@ fun HymnDetailsScreen(
                 }
             }
         )
+        }
+    ) { paddingValues ->
         
         if (uiState.isLoading) {
             Box(
@@ -201,17 +226,7 @@ fun HymnDetailsScreen(
                         }
                     }
                     
-                   /* // Audio Player
-                    AudioPlayerControls(
-                        playbackState = playbackState,
-                        onPlayPause = viewModel::playPause,
-                        onSeek = viewModel::seekTo,
-                        onPlayAudio = {
-                            val audioUrl = if (language == "en") hymn.audioUrlEn else hymn.audioUrlFr
-                            audioUrl?.let { viewModel.playAudio(it) }
-                        },
-                        modifier = Modifier.padding(16.dp)
-                    )*/
+                    // Audio player controls are now in the bottom sheet
                 }
             } ?: run {
                 Box(
